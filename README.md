@@ -42,6 +42,11 @@ Events will be triggered if a `window.fapiEvent` function exists at the point th
 * `fapiStopAd` - [AdvertisingModule.stopAd():void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/AdvertisingModule.html#stopAd%28%29)
 * `fapiSetEmbedCode` - [SocialModule.setLink(linkURL:String):void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/SocialModule.html#setLink%28%29)
 * `fapiSetLink` - [SocialModule.setEmbedCode(code:String):void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/SocialModule.html#setEmbedCode%28%29)
+* `fapiRemoveUserMessage` - [VideoModule.removeUserMessage():void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/VideoModule.html#removeUserMessage%28%29)
+* `fapiCloseMenuPage` - [MenuModule.closeMenuPage():void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/MenuModule.html#closeMenuPage%28%29)
+* `fapiRemoveOverlayMenu` - [MenuModule.removeOverlayMenu():void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/MenuModule.html#removeOverlayMenu%28%29)
+* `fapiIsOverlayMenuShowing` - [MenuModule.isOverlayMenuShowing():Boolean](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/MenuModule.html#isOverlayMenuShowing%28%29)
+* `fapiIsMenuPageShowing` - [MenuModule.isMenuPageShowing():Boolean](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/MenuModule.html#isMenuPageShowing%28%29)
 
 ###Events implemented
 

@@ -10,6 +10,7 @@ package
 	import com.brightcove.api.modules.ExperienceModule;
 	import com.brightcove.api.modules.SocialModule;
 	import com.brightcove.api.modules.VideoPlayerModule;
+	import com.brightcove.api.modules.MenuModule;
 	
 	import flash.events.*;
 	import flash.external.ExternalInterface;
@@ -22,6 +23,7 @@ package
 		private var _experienceModule:ExperienceModule;
 		private var _socialModule:SocialModule;
 		private var _adModule:AdvertisingModule;
+		private var _menuModule:MenuModule;
 		
 		override protected function initialize():void {
 			
@@ -29,6 +31,7 @@ package
 			_experienceModule = player.getModule(APIModules.EXPERIENCE) as ExperienceModule;
 			_socialModule = player.getModule(APIModules.SOCIAL) as SocialModule;
 			_adModule = player.getModule(APIModules.ADVERTISING) as AdvertisingModule;
+			_menuModule = player.getModule(APIModules.MENU) as MenuModule;
 			
 			if (ExternalInterface.available) {
 				Security.allowDomain('*');
@@ -39,8 +42,13 @@ package
 				ExternalInterface.addCallback("fapiIsMuted", fapiIsMuted);
 				ExternalInterface.addCallback("fapiSetBitRateRange", fapiSetBitRateRange);
 				ExternalInterface.addCallback("fapiStopAd", fapiStopAd);
+				ExternalInterface.addCallback("fapiRemoveUserMessage", fapiRemoveUserMessage);
 				ExternalInterface.addCallback("fapiSetEmbedCode", fapiSetEmbedCode);
 				ExternalInterface.addCallback("fapiSetLink", fapiSetLink);
+				ExternalInterface.addCallback("fapiIsMenuPageShowing", fapiIsMenuPageShowing);
+				ExternalInterface.addCallback("fapiCloseMenuPage", fapiCloseMenuPage);
+				ExternalInterface.addCallback("fapiIsOverlayMenuShowing", fapiIsOverlayMenuShowing);
+				ExternalInterface.addCallback("fapiRemoveOverlayMenu", fapiRemoveOverlayMenu);
 
 				var fapiEventListenerAvailable:Boolean = ExternalInterface.call("function() {if (typeof(window.fapiEvent) === 'function') {return true;}}");
 				if (fapiEventListenerAvailable) {
@@ -76,6 +84,10 @@ package
 		{
 			return _videoModule.getVolume();
 		}
+		private function fapiRemoveUserMessage():void
+		{
+			_videoModule.removeUserMessage();
+		}
 		private function fapiSetLink(linkURL:String):void
 		{
 			_socialModule.setLink(linkURL);
@@ -83,6 +95,22 @@ package
 		private function fapiSetEmbedCode(code:String):void
 		{
 			_socialModule.setEmbedCode(code);
+		}
+		private function fapiIsOverlayMenuShowing():Boolean
+		{
+			return _menuModule.isOverlayMenuShowing();
+		}
+		private function fapiIsMenuPageShowing():Boolean
+		{
+			return _menuModule.isMenuPageShowing();
+		}
+		private function fapiCloseMenuPage():void
+		{
+			_menuModule.closeMenuPage();
+		}
+		private function fapiRemoveOverlayMenu():void
+		{
+			_menuModule.removeOverlayMenu();
 		}
 		private function fapiSetBitRateRange(min:Number, max:Number):void
 		{
