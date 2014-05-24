@@ -45,6 +45,7 @@ package
 				ExternalInterface.addCallback("fapiRemoveUserMessage", fapiRemoveUserMessage);
 				ExternalInterface.addCallback("fapiSetEmbedCode", fapiSetEmbedCode);
 				ExternalInterface.addCallback("fapiSetLink", fapiSetLink);
+				ExternalInterface.addCallback("fapiGetLink", fapiGetLink);
 				ExternalInterface.addCallback("fapiIsMenuPageShowing", fapiIsMenuPageShowing);
 				ExternalInterface.addCallback("fapiCloseMenuPage", fapiCloseMenuPage);
 				ExternalInterface.addCallback("fapiIsOverlayMenuShowing", fapiIsOverlayMenuShowing);
@@ -91,6 +92,10 @@ package
 		private function fapiSetLink(linkURL:String):void
 		{
 			_socialModule.setLink(linkURL);
+		}
+		private function fapiGetLink():String
+		{
+			return _socialModule.getLink();
 		}
 		private function fapiSetEmbedCode(code:String):void
 		{

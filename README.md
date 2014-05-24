@@ -1,13 +1,13 @@
 Flash Player API Bridge
 =======================
 
-This plugin exposes some methods of the Flash-only Player API to javscript. The intended use is for when you want to use the Smart Player API in the page, but need to access some fucntionality that is only implemented in the Flash-only player API.
+This plugin exposes some methods of the Flash-only Player API to javascript. The intended use is for when you want to use the Smart Player API in the page, but need to access some functionality that is only implemented in the Flash-only player API.
 
 ##Usage
 
-Add the swf plugin to the player as a plugin in player settings or as a module in the BEML template. Remember to have a crossdomain policy file on your server to enable Flash to load the plugin
+Add the swf plugin to the player as a plugin in player settings or as a module in the BEML template. Remember to have a crossdomain policy file on your server hosting the plugin to enable Flash to load the plugin
 
-The implemented Flash-only player API methods can be accessed from the swf object on the page. For instance, to initially reduce the player volume:
+The Flash-only player API methods that have been implemented can be accessed from the swf object on the page. For instance, to have the player volume set to 50%:
 
     <object id="myExperience123456789" class="BrightcoveExperience">
     ...
@@ -17,14 +17,17 @@ The implemented Flash-only player API methods can be accessed from the swf objec
 
     <script>
     function onReady(event) {
-      var player = brightcove.getExperience(event.target.experience.id);
-      //... Smart Player API code...
+      // Using this plugin:
       var fapiPlayer = document.getElementById(event.target.experience.id);
       fapiPlayer.fapiSetVolume(0.5);
+      
+      // Using regular Smart PLayer API:
+      var player = brightcove.getExperience(event.target.experience.id);
+      //... Smart Player API code...
      }
      </script>
      
-Events will be triggered if a `window.fapiEvent` function exists at the point the player is created.
+Events will be triggered if a `window.fapiEvent` function exists at the point the plugin is loaded.
 
     <script>
     function fapiEvent(id,event) {
@@ -40,8 +43,9 @@ Events will be triggered if a `window.fapiEvent` function exists at the point th
 * `fapiIsMuted` - [VideoPlayerModule.isMuted():Boolean](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/VideoPlayerModule.html#getVolume%28%29)
 * `fapiSetBitRateRange` - [VideoPlayerModule.setBitRateRange(min:int, max:Number):Object](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/VideoPlayerModule.html#setBitRateRange%28%29)
 * `fapiStopAd` - [AdvertisingModule.stopAd():void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/AdvertisingModule.html#stopAd%28%29)
-* `fapiSetEmbedCode` - [SocialModule.setLink(linkURL:String):void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/SocialModule.html#setLink%28%29)
-* `fapiSetLink` - [SocialModule.setEmbedCode(code:String):void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/SocialModule.html#setEmbedCode%28%29)
+* `fapiSetEmbedCode` - [SocialModule.setEmbedCode(code:String):void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/SocialModule.html#setLink%28%29)
+* `fapiSetLink` - [SocialModule.setLink(linkURL:String):void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/SocialModule.html#setEmbedCode%28%29)
+* `fapiGetLink` - [SocialModule.getLink():String](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/SocialModule.html#getLink%28%29)
 * `fapiRemoveUserMessage` - [VideoModule.removeUserMessage():void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/VideoModule.html#removeUserMessage%28%29)
 * `fapiCloseMenuPage` - [MenuModule.closeMenuPage():void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/MenuModule.html#closeMenuPage%28%29)
 * `fapiRemoveOverlayMenu` - [MenuModule.removeOverlayMenu():void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/MenuModule.html#removeOverlayMenu%28%29)
