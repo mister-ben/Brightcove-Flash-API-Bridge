@@ -33,7 +33,8 @@ package
 			_adModule = player.getModule(APIModules.ADVERTISING) as AdvertisingModule;
 			_menuModule = player.getModule(APIModules.MENU) as MenuModule;
 			
-			if (ExternalInterface.available) {
+			// External.interface is not helpful, since it still is true if allowScriptAccess=never
+			try {
 				Security.allowDomain('*');
 				
 				ExternalInterface.addCallback("fapiSetVolume", fapiSetVolume);
@@ -62,6 +63,9 @@ package
 					_videoModule.addEventListener(MediaEvent.RENDITION_CHANGE_REQUEST,fapiMediaEventHandler);
 					_videoModule.addEventListener(MediaEvent.VOLUME_CHANGE,fapiMediaEventHandler);
 				}
+			}
+			catch (error:Error) {
+				_experienceModule.debug("WARNING - Flash API Bridge plugin is unable to use ExternalInterface.");
 			}		
 		}
 		
