@@ -42,6 +42,7 @@ package
 				ExternalInterface.addCallback("fapiMute", fapiMute);
 				ExternalInterface.addCallback("fapiIsMuted", fapiIsMuted);
 				ExternalInterface.addCallback("fapiSetBitRateRange", fapiSetBitRateRange);
+				ExternalInterface.addCallback("fapiGetBufferLength", fapiGetBufferLength);
 				ExternalInterface.addCallback("fapiStopAd", fapiStopAd);
 				ExternalInterface.addCallback("fapiRemoveUserMessage", fapiRemoveUserMessage);
 				ExternalInterface.addCallback("fapiSetEmbedCode", fapiSetEmbedCode);
@@ -124,6 +125,10 @@ package
 		private function fapiSetBitRateRange(min:Number, max:Number):void
 		{
 			_videoModule.setBitRateRange(min,max);
+		}
+		private function fapiGetBufferLength():Number
+		{
+			return _videoModule.getBufferLength();
 		}
 		private function fapiExperienceEventHandler(event:ExperienceEvent):void
 		{

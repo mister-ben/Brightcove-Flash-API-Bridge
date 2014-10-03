@@ -42,6 +42,7 @@ Events will be triggered if a `window.fapiEvent` function exists at the point th
 * `fapiMute` - [VideoPlayerModule.mute(mute:Boolean):void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/VideoPlayerModule.html#mute%28%29)
 * `fapiIsMuted` - [VideoPlayerModule.isMuted():Boolean](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/VideoPlayerModule.html#getVolume%28%29)
 * `fapiSetBitRateRange` - [VideoPlayerModule.setBitRateRange(min:int, max:Number):Object](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/VideoPlayerModule.html#setBitRateRange%28%29)
+* `fapiGetBufferLength` - [VideoPlayerModule.getBufferLength():Number](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/VideoPlayerModule.html#getBufferLength%28%29)
 * `fapiStopAd` - [AdvertisingModule.stopAd():void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/AdvertisingModule.html#stopAd%28%29)
 * `fapiSetEmbedCode` - [SocialModule.setEmbedCode(code:String):void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/SocialModule.html#setLink%28%29)
 * `fapiSetLink` - [SocialModule.setLink(linkURL:String):void](http://docs.brightcove.com/en/video-cloud/player/com/brightcove/api/modules/SocialModule.html#setEmbedCode%28%29)
