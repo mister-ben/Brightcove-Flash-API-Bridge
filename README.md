@@ -7,27 +7,34 @@ This plugin exposes some methods of the Flash-only Player API to javascript. The
 
 Add the swf plugin to the player as a plugin in player settings or as a module in the BEML template. Remember to have a crossdomain policy file on your server hosting the plugin to enable Flash to load the plugin
 
-The Flash-only player API methods that have been implemented can be accessed from the swf object on the page. For instance, to have the player volume set to 50%:
+The Flash-only player API methods that have been implemented can be accessed from the swf object on the page. For instance, to have the player volume set to 50% and update the sharing link:
 
     <object id="myExperience123456789" class="BrightcoveExperience">
     ...
-      <param name="inlcudeAPI" value="true" />
-      <param name="templateReadyhandler" value="onReady" />
+      <param name="includeAPI" value="true" />
+      <param name="templateReadyHandler" value="onReady" />
     </object>
 
     <script>
     function onReady(event) {
-      // Using this plugin:
+      // Get the player object after the player has been generated:
       var fapiPlayer = document.getElementById(event.target.experience.id);
+      
       fapiPlayer.fapiSetVolume(0.5);
       
-      // Using regular Smart PLayer API:
-      var player = brightcove.getExperience(event.target.experience.id);
-      //... Smart Player API code...
+      console.log('Volume ' + fapiPlayer.fapiGetVolume());
+      
+      fapiPlayer.fapiSetLink(window.location.href);
+      
+      // Some regular Smart Player API code could also be used:
+      // var player = brightcove.api.getExperience(event.target.experience.id);
+      // ... Smart Player API code...
      }
      </script>
      
-Events will be triggered if a `window.fapiEvent` function exists at the point the plugin is loaded.
+Note there's no hard requirement to put this into the Smart Player ready handler as above, but this will generally be the most convenient way to slot this into your existing code. 
+ 
+Events will be triggered only if a `window.fapiEvent` function has been defined before the plugin is loaded.
 
     <script>
     function fapiEvent(id,event) {
